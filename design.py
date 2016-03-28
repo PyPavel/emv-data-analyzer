@@ -99,6 +99,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.parser_button)
         self.parser_output = QtWidgets.QTextBrowser(self.centralwidget)
         self.parser_output.setObjectName("parser_output")
+        self.parser_output.setTextInteractionFlags(QtCore.Qt.TextSelectableByMouse )
+        self.parser_output.setTextInteractionFlags(QtCore.Qt.TextSelectableByKeyboard)
         self.horizontalLayout.addWidget(self.parser_output)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.verticalLayout.setStretch(0, 2)
@@ -123,6 +125,6 @@ class Ui_MainWindow(object):
         self.value_label.setText(_translate("MainWindow", "Value"))
         self.tag_button.setText(_translate("MainWindow", "Analyze ->"))
         self.data_parser_label.setText(_translate("MainWindow", "EMV data parser"))
-        self.parser_input.setPlaceholderText(_translate("MainWindow", "9F34020102"))
+        self.parser_input.setPlaceholderText(_translate("MainWindow", "9F02060000000030009F030600000000000008"))
         self.parser_button.setText(_translate("MainWindow", "Analyze ->"))
 
