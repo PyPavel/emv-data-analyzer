@@ -1,3 +1,5 @@
+import emv_tags_db
+
 def parse_emv_data_block(emv_data_block):
     pairs = list([emv_data_block[i:i + 2] for i in range(0, len(emv_data_block), 2)])
     tags = []
@@ -34,6 +36,10 @@ def parse_emv_data_block(emv_data_block):
 def tag_len_value_to_string(tag_len_value):
     outstr = ""
     for i in tag_len_value:
-        outstr += "Tag: " + i[0] + " Data Length: " + i[1] + "\n" + "Value: " + i[2] +"\n\n"
+        tag_name_str = ""
+        for tag in emv_tags_db.tags:
+            if i[0] in tag:
+                tag_name_str += "\n" + tag[0];
+        outstr += "Tag: " + i[0] + tag_name_str +"\nData Length: " + i[1] + "\nValue: " + i[2] +"\n\n"
     return outstr
 

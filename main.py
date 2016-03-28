@@ -3,16 +3,22 @@ import sys
 
 import design
 import emv_data_parser
+import emv_tags_db
 
 class EmvDataAnalyzerApp(QtWidgets.QMainWindow,design.Ui_MainWindow):
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self)
 
+        #initial data setup
+        self.tag_input.addItems([tag[1] for tag in emv_tags_db.tags])
+        self.name_inpu.addItems([tag[0] for tag in emv_tags_db.tags])
+
         #connect signals to slots
         self.parser_button.clicked.connect(self.ParseDataBlock)
         self.tag_button.clicked.connect(self.AnalyzeTag)
-
+        self.tag_input.currentIndexChanged.connect(self.SetTagForAnalyze)
+        self.name_inpu.currentIndexChanged.connect(self.SetTagForAnalyze)
     #slot functions
     def ParseDataBlock(self):
         tag_len_data = []
@@ -24,6 +30,10 @@ class EmvDataAnalyzerApp(QtWidgets.QMainWindow,design.Ui_MainWindow):
 
     def AnalyzeTag(self):
         print("AnalyzeEMVTag")
+
+    def SetTagForAnalyze(self, index):
+        self.name_inpu.setCurrentIndex(index)
+        self.tag_input.setCurrentIndex(index)
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
