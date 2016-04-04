@@ -1,5 +1,7 @@
-tags = ([ "TAG_TERMINAL_VERIFICATION_RESULTS"                 , "95",   { "Name" : "TVR",  "Description" : "Terminal Verification results", "Interpritator":0 }],
-[ "TAG_TERMINAL_VERIFICATION_RESULTS_2"               , "0095", { "Name" : "TVR",  "Description" : "Terminal Verification results", "Interpritator":0 }],
+import interpritators
+
+tags = ([ "TAG_TERMINAL_VERIFICATION_RESULTS", "95",   { "Name" : "TVR",  "Description" : "Terminal Verification results","Value":"0000000000" ,"Interpritator":interpritators.tvr_inter }],
+[ "TAG_TERMINAL_VERIFICATION_RESULTS_2"      , "0095", { "Name" : "TVR",  "Description" : "Terminal Verification results","Value":"0000000000" ,"Interpritator":0 }],
 [ "TAG_ADDITIONAL_TERMINAL_CAPABILITIES"     , "9F40" ],
 [ "TAG_AMOUNT_AUTHORISED"                             , "9F02"],
 [ "TAG_AMOUNT_AUTHORISED_BINARY"                      , "81"],
