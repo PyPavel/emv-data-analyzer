@@ -205,217 +205,307 @@ def tvr_inter(tvr):
     else:
         data.append("       bit 1   = 0      RFU");
     return data
-'''
-def termCap_inter(termCap):
-    bytes = bytearray.fromhex(termCap)
 
+def term_cap_inter(termCap):
+    bytes = bytearray.fromhex(termCap)
+    data = []
     if  (int(bytes[0]) & int('10000000',2)):
-        print("Byte 1 bit 8 = 1      Manual key entry is supported");
+         data.append("Byte 1 bit 8 = 1      Manual key entry is supported");
     else: 
-        print("Byte 1 bit 8 = 0      Manual key entry is NOT supported");
+         data.append("Byte 1 bit 8 = 0      Manual key entry is NOT supported");
 
     if  (int(bytes[0]) & int('01000000',2)):
-        print("       bit 7 = 1      Magnetic stripe is supported");
+         data.append("       bit 7 = 1      Magnetic stripe is supported");
     else:
-        print("       bit 7 = 0      Magnetic stripe is NOT supported");
+         data.append("       bit 7 = 0      Magnetic stripe is NOT supported");
 
     if  (int(bytes[0]) & int('00100000',2)):
-        print("       bit 6 = 1      IC with contacts is supported");
+         data.append("       bit 6 = 1      IC with contacts is supported");
     else:
-      print("       bit 6 = 0      IC with contacts is NOT supported");
+       data.append("       bit 6 = 0      IC with contacts is NOT supported");
 
     if  (int(bytes[0]) & int('00010000',2)):
-        print("       bit 5 = 1      RFU");
+         data.append("       bit 5 = 1      RFU");
     else:
-      print("       bit 5 = 0      RFU");
+       data.append("       bit 5 = 0      RFU");
 
     if  (int(bytes[0]) & int('00001000',2)):
-        print("       bit 4 = 1      RFU");
+         data.append("       bit 4 = 1      RFU");
     else:
-      print("       bit 4 = 0      RFU");
+       data.append("       bit 4 = 0      RFU");
 
     if  (int(bytes[0]) & int('00000100',2)):
-        print("       bit 3 = 1      RFU");
+         data.append("       bit 3 = 1      RFU");
     else:
-      print("       bit 3 = 0      RFU");
+       data.append("       bit 3 = 0      RFU");
 
     if  (int(bytes[0]) & int('00000010',2)):
-        print("       bit 2 = 1      RFU");
+         data.append("       bit 2 = 1      RFU");
     else:
-      print("       bit 2 = 0      RFU");
+       data.append("       bit 2 = 0      RFU");
 
     if  (int(bytes[0]) & int('00000001',2)):
-        print("       bit 1 = 1      RFU");
+         data.append("       bit 1 = 1      RFU");
     else:
-      print("       bit 1 = 0      RFU");
+       data.append("       bit 1 = 0      RFU");
 
 
     if  (int(bytes[1]) & int('10000000',2)):
-        print("Byte 2 bit 8 = 1      Plaintext PIN for ICC verification is supported");
+         data.append("Byte 2 bit 8 = 1      Plaintext PIN for ICC verification is supported");
     else:
-      print("Byte 2 bit 8 = 0      Plaintext PIN for ICC verification is NOT supported");
+       data.append("Byte 2 bit 8 = 0      Plaintext PIN for ICC verification is NOT supported");
 
     if  (int(bytes[1]) & int('01000000',2)):
-        print("       bit 7 = 1      Enciphered PIN for online verification is supported");
+         data.append("       bit 7 = 1      Enciphered PIN for online verification is supported");
     else:
-      print("       bit 7 = 0      Enciphered PIN for online verification is NOT supported");
+       data.append("       bit 7 = 0      Enciphered PIN for online verification is NOT supported");
 
     if  (int(bytes[1]) & int('00100000',2)):
-        print("       bit 6 = 1      Signature (paper) is supported");
+         data.append("       bit 6 = 1      Signature (paper) is supported");
     else:
-      print("       bit 6 = 0      Signature (paper) is NOT supported");
+       data.append("       bit 6 = 0      Signature (paper) is NOT supported");
 
     if  (int(bytes[1]) & int('00010000',2)):
-        print("       bit 5 = 1      Enciphered PIN for offline verification is supported");
+         data.append("       bit 5 = 1      Enciphered PIN for offline verification is supported");
     else:
-      print("       bit 5 = 0      Enciphered PIN for offline verification is NOT supported");
+       data.append("       bit 5 = 0      Enciphered PIN for offline verification is NOT supported");
 
     if  (int(bytes[1]) & int('00001000',2)):
-        print("       bit 4 = 1      No CVM Required is supported");
+         data.append("       bit 4 = 1      No CVM Required is supported");
     else:
-      print("       bit 4 = 0      No CVM Required is NOT supported");
+       data.append("       bit 4 = 0      No CVM Required is NOT supported");
 
     if  (int(bytes[1]) & int('00000100',2)):
-        print("       bit 3 = 1      RFU");
+         data.append("       bit 3 = 1      RFU");
     else:
-      print("       bit 3 = 0      RFU");
+       data.append("       bit 3 = 0      RFU");
 
     if  (int(bytes[1]) & int('00000010',2)):
-        print("       bit 2 = 1      RFU");
+         data.append("       bit 2 = 1      RFU");
     else:
-      print("       bit 2 = 0      RFU");
+       data.append("       bit 2 = 0      RFU");
 
     if  (int(bytes[1]) & int('00000001',2)):
-        print("       bit 1 = 1      RFU");
+         data.append("       bit 1 = 1      RFU");
     else:
-      print("       bit 1 = 0      RFU");
+       data.append("       bit 1 = 0      RFU");
 
 
     if  (int(bytes[2]) & int('10000000',2)):
-        print("Byte 3 bit 8 = 1      SDA is supported");
+         data.append("Byte 3 bit 8 = 1      SDA is supported");
     else:
-      print("Byte 3 bit 8 = 0      SDA is NOT supported");
+       data.append("Byte 3 bit 8 = 0      SDA is NOT supported");
 
     if  (int(bytes[2]) & int('01000000',2)):
-        print("       bit 7 = 1      DDA is supported");
+         data.append("       bit 7 = 1      DDA is supported");
     else:
-      print("       bit 7 = 0      DDA is NOT supported");
+       data.append("       bit 7 = 0      DDA is NOT supported");
 
     if  (int(bytes[2]) & int('00100000',2)):
-        print("       bit 6 = 1      Card capture is supported");
+         data.append("       bit 6 = 1      Card capture is supported");
     else:
-      print("       bit 6 = 0      Card capture is NOT supported");
+       data.append("       bit 6 = 0      Card capture is NOT supported");
 
     if  (int(bytes[2]) & int('00010000',2)):
-        print("       bit 5 = 1      RFU");
+         data.append("       bit 5 = 1      RFU");
     else:
-      print("       bit 5 = 0      RFU");
+       data.append("       bit 5 = 0      RFU");
 
     if  (int(bytes[2]) & int('00001000',2)):
-        print("       bit 4 = 1      CDA is supported");
+         data.append("       bit 4 = 1      CDA is supported");
     else:
-      print("       bit 4 = 0      CDA is NOT supported");
+       data.append("       bit 4 = 0      CDA is NOT supported");
 
     if  (int(bytes[2]) & int('00000100',2)):
-        print("       bit 3 = 1      RFU");
+         data.append("       bit 3 = 1      RFU");
     else:
-      print("       bit 3 = 0      RFU");
+       data.append("       bit 3 = 0      RFU");
 
     if  (int(bytes[2]) & int('00000010',2)):
-        print("       bit 2 = 1      RFU");
+         data.append("       bit 2 = 1      RFU");
     else:
-      print("       bit 2 = 0      RFU");
+       data.append("       bit 2 = 0      RFU");
 
     if  (int(bytes[2]) & int('00000001',2)):
-        print("       bit 1 = 1      RFU");
+         data.append("       bit 1 = 1      RFU");
     else:
-      print("       bit 1 = 0      RFU");
+       data.append("       bit 1 = 0      RFU");
     
+    return data    
 
 def aip_inter(AIP):
     bytes = bytearray.fromhex(AIP)
-
+    data = []
     if  ( int(bytes[0]) & int('10000000',2)):
-        print("Byte 1 bit 8 = 1      RFU")
+         data.append("Byte 1 bit 8 = 1      RFU")
     else:  
-        print("Byte 1 bit 8 = 0      RFU");
+         data.append("Byte 1 bit 8 = 0      RFU");
 
     if  ( int(bytes[0]) & int('01000000',2)):
-        print("       bit 7 = 1      Offline static data authentication is supported");
+         data.append("       bit 7 = 1      Offline static data authentication is supported");
     else:
-        print("       bit 7 = 0      Offline static data authentication is NOT supported");
+         data.append("       bit 7 = 0      Offline static data authentication is NOT supported");
 
     if  ( int(bytes[0]) & int('00100000',2)):
-        print("       bit 6 = 1      Offline dynamic data authentication is supported");
+         data.append("       bit 6 = 1      Offline dynamic data authentication is supported");
     else:
-        print("       bit 6 = 0      Offline dynamic data authentication is NOT supported");
+         data.append("       bit 6 = 0      Offline dynamic data authentication is NOT supported");
 
     if  ( int(bytes[0]) & int('00010000',2)):
-        print("       bit 5 = 1      Cardholder verification is supported");
+         data.append("       bit 5 = 1      Cardholder verification is supported");
     else:
-        print("       bit 5 = 0      Cardholder verification is NOT supported");
+         data.append("       bit 5 = 0      Cardholder verification is NOT supported");
 
     if  ( int(bytes[0]) & int('00001000',2)):
-        print("       bit 4 = 1      Terminal risk management is to be performed");
+         data.append("       bit 4 = 1      Terminal risk management is to be performed");
     else:
-        print("       bit 4 = 0      Terminal risk management MAY NOT be performed");
+         data.append("       bit 4 = 0      Terminal risk management MAY NOT be performed");
 
     if  ( int(bytes[0]) & int('00000100',2)):
-        print("       bit 3 = 1      Issuer authentication is supported");
+         data.append("       bit 3 = 1      Issuer authentication is supported");
     else:
-        print("       bit 3 = 0      Issuer authentication is NOT supported");
+         data.append("       bit 3 = 0      Issuer authentication is NOT supported");
 
     if  ( int(bytes[0]) & int('00000010',2)):
-        print("       bit 2 = 1      Reserved for use by the EMV Contactless Specifications");
+         data.append("       bit 2 = 1      Reserved for use by the EMV Contactless Specifications");
     else:
-        print("       bit 2 = 0      Reserved for use by the EMV Contactless Specifications");
+         data.append("       bit 2 = 0      Reserved for use by the EMV Contactless Specifications");
 
     if  ( int(bytes[0]) & int('00000001',2)):
-        print("       bit 1 = 1      Combined DDA / GENERATE AC supported");
+         data.append("       bit 1 = 1      Combined DDA / GENERATE AC supported");
     else:
-        print("       bit 1 = 0      Combined DDA / GENERATE AC NOT supported");
+         data.append("       bit 1 = 0      Combined DDA / GENERATE AC NOT supported");
 
     if  ( int(bytes[1]) & int('10000000',2)):
-        print("Byte 2 bit 8 = 1      EMV Contactless supported");
+         data.append("Byte 2 bit 8 = 1      EMV Contactless supported");
     else:
-        print("Byte 2 bit 8 = 0      EMV Contactless NOT supported");
+         data.append("Byte 2 bit 8 = 0      EMV Contactless NOT supported");
 
     if  ( int(bytes[1]) & int('01000000',2)):
-        print("       bit 7 = 1      Reserved for use by the EMV Contactless Specifications");
+         data.append("       bit 7 = 1      Reserved for use by the EMV Contactless Specifications");
     else:
-        print("       bit 7 = 0      Reserved for use by the EMV Contactless Specifications");
+         data.append("       bit 7 = 0      Reserved for use by the EMV Contactless Specifications");
 
     if  ( int(bytes[1]) & int('00100000',2)):
-        print("       bit 6 = 1      RFU");
+         data.append("       bit 6 = 1      RFU");
     else:
-        print("       bit 6 = 0      RFU");
+         data.append("       bit 6 = 0      RFU");
 
     if  ( int(bytes[1]) & int('00010000',2)):
-        print("       bit 5 = 1      RFU");
+         data.append("       bit 5 = 1      RFU");
     else:
-        print("       bit 5 = 0      RFU");
+         data.append("       bit 5 = 0      RFU");
 
     if  ( int(bytes[1]) & int('00001000',2)):
-        print("       bit 4 = 1      RFU");
+         data.append("       bit 4 = 1      RFU");
     else:
-        print("       bit 4 = 0      RFU");
+         data.append("       bit 4 = 0      RFU");
 
     if  ( int(bytes[1]) & int('00000100',2)):
-        print("       bit 3 = 1      RFU");
+         data.append("       bit 3 = 1      RFU");
     else:
-        print("       bit 3 = 0      RFU");
+         data.append("       bit 3 = 0      RFU");
 
     if  ( int(bytes[1]) & int('00000010',2)):
-        print("       bit 2 = 1      RFU");
+         data.append("       bit 2 = 1      RFU");
     else:
-        print("       bit 2 = 0      RFU");
+         data.append("       bit 2 = 0      RFU");
 
     if  ( int(bytes[1]) & int('00000001',2)):
-        print("       bit 1 = 1      RFU");
+         data.append("       bit 1 = 1      RFU");
     else:
-        print("       bit 1 = 0      RFU");
+         data.append("       bit 1 = 0      RFU");
+    return data
 
-def respCode_inter( respCode ):
+def tsi_inter(tsi):
+    data = []
+    bytes=bytearray.fromhex(tsi)
+
+    if (int(bytes[0]) & int('10000000',2)):
+        data.append("Byte 1 bit 8 = 1      Offline data authentication was performed");
+    else:
+        data.append("Byte 1 bit 8 = 0      Offline data authentication was NOT performed");
+
+    if  (int(bytes[0]) & int('01000000',2)):
+        data.append("       bit 7 = 1      Cardholder verification was performed");
+    else:
+        data.append("       bit 7 = 0      Cardholder verification was NOT performed");
+
+    if  (int(bytes[0]) & int('00100000',2)):
+        data.append("       bit 6 = 1      Card risk management was performed");
+    else:
+        data.append("       bit 6 = 0      Card risk management was NOT performed");
+
+    if  (int(bytes[0]) & int('00010000',2)):
+        data.append("       bit 5 = 1      Issuer authentication was performed");
+    else:
+        data.append("       bit 5 = 0      Issuer authentication was NOT performed");
+
+    if  (int(bytes[0]) & int('00001000',2)):
+        data.append("       bit 4 = 1      Terminal risk management was performed");
+    else:
+        data.append("       bit 4 = 0      Terminal risk management was NOT performed");
+
+    if  (int(bytes[0]) & int('00000100',2)):
+        data.append("       bit 3 = 1      Script processing was performed");
+    else:
+        data.append("       bit 3 = 0      Script processing was NOT performed");
+
+    if  (int(bytes[0]) & int('00000010',2)):
+        data.append("       bit 2 = 1      RFU");
+    else:
+        data.append("       bit 2 = 0      RFU");
+
+    if  (int(bytes[0]) & int('00000001',2)):
+        data.append("       bit 1 = 1      RFU");
+    else:
+        data.append("       bit 1 = 0      RFU");
+
+
+    if  (int(bytes[1]) & int('10000000',2)):
+        data.append("Byte 2 bit 8 = 1      RFU");
+    else:
+        data.append("Byte 2 bit 8 = 0      RFU");
+
+    if  (int(bytes[1]) & int('01000000',2)):
+        data.append("       bit 7 = 1      RFU");
+    else:
+        data.append("       bit 7 = 0      RFU");
+
+    if  (int(bytes[1]) & int('00100000',2)):
+        data.append("       bit 6 = 1      RFU");
+    else:
+        data.append("       bit 6 = 0      RFU");
+
+    if  (int(bytes[1]) & int('00010000',2)):
+        data.append("       bit 5 = 1      RFU");
+    else:
+        data.append("       bit 5 = 0      RFU");
+
+    if  (int(bytes[1]) & int('00001000',2)):
+        data.append("       bit 4 = 1      RFU");
+    else:
+        data.append("       bit 4 = 0      RFU");
+
+    if  (int(bytes[1]) & int('00000100',2)):
+        data.append("       bit 3 = 1      RFU");
+    else:
+        data.append("       bit 3 = 0      RFU");
+
+    if  (int(bytes[1]) & int('00000010',2)):
+        data.append("       bit 2 = 1      RFU");
+    else:
+        data.append("       bit 2 = 0      RFU");
+
+    if  (int(bytes[1]) & int('00000001',2)):
+        data.append("       bit 1 = 1      RFU");
+    else:
+        data.append("       bit 1 = 0      RFU");
+
+    return data
+
+def resp_code_inter( respCode ):
+    data = []
     switch = {
         "00"  : "Approved or completed succesfully",
         "01"  : "Refer to card issuer",
@@ -436,8 +526,9 @@ def respCode_inter( respCode ):
         "Y3"  : "Unable to go online, Requesting for offline approval",
         "Z3"  : "Unable to go online, Requesting for offline decline",
     }
-    print(switch.get(respCode))
-
+    data.append(switch.get(respCode))
+    return data
+"""
 def cvr_inter( cvm ):
     bytes = bytearray.fromhex( cvm )
 
@@ -790,7 +881,7 @@ def tsi_inter(tsi):
         print("       bit 1 = 0      RFU");
 
 
-"""
+
 proc InterpretTrack1Data(data, mask, masker):
 {
   EquivalentData:
@@ -943,7 +1034,6 @@ roc InterpretCryptogramInformationData(cid):
     LogD("Length of CID is not 1 byte, interpretation not possible");
   }
 };
-"""
 
 def add_term_cap_inter(add_term_cap):
     bytes = bytearray.fromhex(add_term_cap)
@@ -1149,4 +1239,4 @@ def add_term_cap_inter(add_term_cap):
     if  (int(bytes[4]) & int('00000001',2)):
         print("       bit 1 = 1      Code table 1 supported");
     else:
-        print("       bit 1 = 0      Code table 1 NOT supported");'''
+        print("       bit 1 = 0      Code table 1 NOT supported");'''"""

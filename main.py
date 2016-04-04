@@ -61,7 +61,7 @@ class EmvDataAnalyzerApp(QtWidgets.QMainWindow,design.Ui_MainWindow):
     def SetTagForAnalyze(self, index):
         self.name_inpu.setCurrentIndex(index)
         self.tag_input.setCurrentIndex(index)
-        self.value_input.insert(emv_tags_db.tags[index][2]["Value"])
+        self.value_input.setText(emv_tags_db.tags[index][2]["Value"])
         self.UpdateModel(index)
 
     def UpdateModel(self, index):

@@ -1,7 +1,11 @@
 import interpritators
 
-tags = ([ "TAG_TERMINAL_VERIFICATION_RESULTS", "95",   { "Name" : "TVR",  "Description" : "Terminal Verification results","Value":"0000000000" ,"Interpritator":interpritators.tvr_inter }],
-[ "TAG_TERMINAL_VERIFICATION_RESULTS_2"      , "0095", { "Name" : "TVR",  "Description" : "Terminal Verification results","Value":"0000000000" ,"Interpritator":0 }],
+tags = ([ "TAG_TERMINAL_VERIFICATION_RESULTS", "95",   { "Name" : "TVR",  "Description" : "Terminal Verification results","Value":"0000000000" ,"Interpritator":interpritators.tvr_inter}],
+[ "TAG_TERMINAL_VERIFICATION_RESULTS_2"      , "0095", { "Name" : "TVR",  "Description" : "Terminal Verification results","Value":"0000000000" ,"Interpritator":interpritators.tvr_inter }],
+[ "TAG_TERMINAL_CAPABILITIES"                , "9F33", { "Name" : "Terminal capabilities", "Description" : "Terminal capabilities","Value":"000000" ,"Interpritator":interpritators.term_cap_inter}],
+[ "TAG_AIP"                                  , "82",   { "Name" : "Application interchange profile","Description" : "Application interchange profile", "Value":"0000","Interpritator":interpritators.aip_inter}],
+[ "TAG_TSI"                                  , "9B",   { "Name" : "Transaction status information", "Description" : "Transaction status information","Value":"0000","Interpritator":interpritators.tsi_inter}],
+[ "TAG_AUTHORISATION_RESPONSE_CODE"          , "8A",   { "Name" : "Auth resp code", "Description" : "Auth resp code","Value":"00" ,"Interpritator":interpritators.resp_code_inter}],
 [ "TAG_ADDITIONAL_TERMINAL_CAPABILITIES"     , "9F40" ],
 [ "TAG_AMOUNT_AUTHORISED"                             , "9F02"],
 [ "TAG_AMOUNT_AUTHORISED_BINARY"                      , "81"],
@@ -20,7 +24,6 @@ tags = ([ "TAG_TERMINAL_VERIFICATION_RESULTS", "95",   { "Name" : "TVR",  "Descr
 [ "TAG_APPLICATION_IDENTIFIER"                        , "4F"],
 [ "TAG_APPLICATION_IDENTIFIER_2"                      , "004F"],
 [ "TAG_AID"                                           , "9F06"],
-[ "TAG_AIP"                                           , "82"],
 [ "TAG_AIP_2"                                         , "0082"],
 [ "TAG_APPLICATION_ISSUER_LIFE_CYCLE_DATA"            , "C8"],
 [ "TAG_APPLICATION_ISSUER_LIFE_CYCLE_DATA_2"          , "00C8"],
@@ -35,7 +38,6 @@ tags = ([ "TAG_TERMINAL_VERIFICATION_RESULTS", "95",   { "Name" : "TVR",  "Descr
 [ "TAG_ATC"                                           , "9F36"],
 [ "TAG_AUC"                                           , "9F07"],
 [ "TAG_APPLICATION_VERSION_NUMBER "                   , "9F08"],
-[ "TAG_AUTHORISATION_RESPONSE_CODE"                   , "8A"],
 [ "TAG_AUTHORISATION_RESPONSE_CODE_2"                 , "008A"],
 [ "TAG_BANK_IDENTIFIER_CODE"                          , "5F54"],
 [ "TAG_CDOL1"                                         , "8C"],
@@ -112,7 +114,6 @@ tags = ([ "TAG_TERMINAL_VERIFICATION_RESULTS", "95",   { "Name" : "TVR",  "Descr
 [ "TAG_SDDA"                                          , "9F4B"],
 [ "TAG_SSAD"                                          , "93"],
 [ "TAG_SSAD_2"                                        , "0093"],
-[ "TAG_TERMINAL_CAPABILITIES"                         , "9F33"],
 [ "TAG_TERMINAL_COUNTRY_CODE"                         , "9F1A"],
 [ "TAG_TERMINAL_TYPE"                                 , "9F35"],
 [ "TAG_TDOL"                                          , "97"],
@@ -147,8 +148,7 @@ tags = ([ "TAG_TERMINAL_VERIFICATION_RESULTS", "95",   { "Name" : "TVR",  "Descr
 [ "TAG_RESPONSE_MESSAGE_TEMPLATE_FORMAT2"             , "77"],
 [ "TAG_RESPONSE_MESSAGE_TEMPLATE_FORMAT2_2"           , "0077"],
 [ "TAG_TRACK1DATA_PAYPASS"                            , "56"],
-[ "TAG_TRACK2DATA_PAYPASS"                            , "9F6B"],
-[ "TAG_TSI"                                           , "9B" ])
+[ "TAG_TRACK2DATA_PAYPASS"                            , "9F6B"])
 
 #[ TAG_EP_TERMINAL_TRANSACTION_QUALIFIERS            
 #[ TAG_EXPRESSPAY_TERMINAL_TRANSACTION_CAPABILITIES
@@ -171,4 +171,4 @@ tags = ([ "TAG_TERMINAL_VERIFICATION_RESULTS", "95",   { "Name" : "TVR",  "Descr
 #{"Tag":TAG_TRACK1_DISCRETIONARY_DATA}
 #{"Tag":TAG_ISSUER_AUTHENTICATION_DATA,}
 #{"Tag":TAG_ISSUER_AUTHENTICATION_DATA_1,}"""
-#{"Tag":TAG_EP_TERMINAL_TRANSACTION_QUALIFIERS,}"""
+#{"Tag":TAG_EP_TERMINAL_TRANSACTION_QUALIFIERS,}
