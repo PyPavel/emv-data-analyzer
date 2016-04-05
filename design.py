@@ -7,7 +7,6 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import tag_analyzer_model_view
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):

@@ -4,7 +4,6 @@ import sys
 import design
 import emv_data_parser
 import emv_tags_db
-import tag_analyzer_model_view
 
 class EmvDataAnalyzerApp(QtWidgets.QMainWindow,design.Ui_MainWindow):
     def __init__(self):
@@ -61,22 +60,47 @@ class EmvDataAnalyzerApp(QtWidgets.QMainWindow,design.Ui_MainWindow):
     def SetTagForAnalyze(self, index):
         self.name_inpu.setCurrentIndex(index)
         self.tag_input.setCurrentIndex(index)
-        self.value_input.setText(emv_tags_db.tags[index][2]["Value"])
+        try:
+            self.value_input.setText(emv_tags_db.tags[index][2]["Value"])
+        except:
+            self.value_input.setText("NULL")
         self.UpdateModel(index)
 
     def UpdateModel(self, index):
         self.itag.setText("Tag: 0x" + emv_tags_db.tags[index][1] + " " + emv_tags_db.tags[index][0])
-        self.iname.setText("Name: " + emv_tags_db.tags[index][2]["Name"])
-        self.idesc.setText("Description: " + emv_tags_db.tags[index][2]["Description"])
-        self.ival.setText("Value: " + self.value_input.text())       
-        self.ival.removeRows(0,self.ival.rowCount())
-        data = emv_tags_db.tags[index][2]["Interpritator"](self.value_input.text())
-        for row in data:
-            bit = QtGui.QStandardItem(row)
-            bit.setCheckable(True)
-            if row.find("= 0") == -1:
-                bit.setCheckState(True)
-            self.ival.appendRow(bit)
+        try: 
+            emv_tags_db.tags[index][2] 
+        except:
+            self.iname.setText("DATA NOT FOUND, TRY ANOTHER TAG :)")
+            self.idesc.setText("")
+            self.ival.setText("")
+            self.ival.removeRows(0,self.ival.rowCount())
+        else:
+            self.iname.setText("Name: " + emv_tags_db.tags[index][2]["Name"])
+            self.idesc.setText("Description: " + emv_tags_db.tags[index][2]["Description"])
+            self.ival.setText("Value: " + self.value_input.text())       
+            self.ival.removeRows(0,self.ival.rowCount())
+            try:
+                data = emv_tags_db.tags[index][2]["Interpritator"](self.value_input.text())
+            except:
+                self.ival.setText("NOT VALID INPUT")
+                self.value_input.setText(emv_tags_db.tags[self.tag_input.currentIndex()][2]["Value"])
+            else: 
+                if len(data):
+                    for row in data:
+                        bit = QtGui.QStandardItem(row)
+                        if row.find("= 0") != -1:
+                            bit.setCheckable(True)
+                            bit.setCheckState(False)
+                        elif row.find("= 1") != -1:
+                            bit.setCheckable(True)
+                            bit.setCheckState(True)
+                        else:
+                            bit.setCheckable(False) 
+                        self.ival.appendRow(bit)
+                else:
+                    self.ival.setText("NOT VALID INPUT")
+                    self.value_input.setText(emv_tags_db.tags[self.tag_input.currentIndex()][2]["Value"])
 
     def ModelClicked(self,index):
         byteIndex,bitIndex = index.row() // 8, index.row() % 8 
